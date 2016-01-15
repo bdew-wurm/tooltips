@@ -1,0 +1,12 @@
+{
+    if(this.wallId == 0) {
+        short h00 = this.world.getCaveBuffer().getRawFloor(this.x, this.y);
+        short h01 = this.world.getCaveBuffer().getRawFloor(this.x, this.y + 1);
+        short h10 = this.world.getCaveBuffer().getRawFloor(this.x + 1, this.y);
+        short h11 = this.world.getCaveBuffer().getRawFloor(this.x + 1, this.y + 1);
+        if(h00 == h01 && h00 == h10 && h00 == h11) {
+            return this.name + " (flat)";
+        }
+    }
+    return this.name;
+}

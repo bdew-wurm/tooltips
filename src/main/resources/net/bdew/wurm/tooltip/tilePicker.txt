@@ -1,0 +1,40 @@
+{
+    if (this.section == 3) {
+        return "Tile corner (" + (int)(this.world.getNearTerrainBuffer().getHeight(this.x, this.y)*10) + ")";
+    }
+
+    String slope = this.getSlopeSuffix(true);
+    if (slope == null)
+        slope = "";
+    if (this.section != 0) {
+        return "Tile border" + slope;
+    }
+
+    final com.wurmonline.mesh.Tiles.Tile type = this.world.getNearTerrainBuffer().getTileType(this.x, this.y);
+    final byte data = this.world.getNearTerrainBuffer().getData(this.x, this.y);
+
+    slope = slope.replace(" (", "").replace(")", "").trim();
+    String suffix;
+    if (type == com.wurmonline.mesh.Tiles.Tile.TILE_FIELD) {
+        suffix = com.wurmonline.mesh.FieldData.getTypeName(data) + ", " + com.wurmonline.mesh.FieldData.getAgeName(data);
+        if (!com.wurmonline.mesh.FieldData.isTended(data)) {
+            suffix = suffix + ", untended";
+        }
+    } else if ((type.isTree() || type.isBush())) {
+        final com.wurmonline.mesh.FoliageAge fage = com.wurmonline.mesh.FoliageAge.getFoliageAge(data);
+        suffix = fage.getAgeName();
+        if (fage.getAgeId() > com.wurmonline.mesh.FoliageAge.YOUNG_FOUR.getAgeId() && fage.getAgeId() < com.wurmonline.mesh.FoliageAge.OVERAGED.getAgeId() && type.usesNewData() && type.isNormal() && (data & 0x8) > 0) {
+            suffix = String.valueOf(suffix) + ", harvestable";
+        }
+    } else if (type == com.wurmonline.mesh.Tiles.Tile.TILE_GRASS) {
+        suffix = com.wurmonline.mesh.GrassData.getFlowerTypeName(data);
+    } else suffix = "";
+
+    if (suffix == null || suffix.equals(" ()")) suffix = "";
+    if (suffix.length() > 0 && slope.length() > 0) suffix += ", ";
+    suffix += slope;
+    if (suffix.length() > 0)
+        suffix = " (" + suffix + ")";
+
+    return String.valueOf(type.getTileName(data)) + suffix;
+}
