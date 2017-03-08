@@ -15,7 +15,7 @@
 
     slope = slope.replace(" (", "").replace(")", "").trim();
     String suffix;
-    if (type == com.wurmonline.mesh.Tiles.Tile.TILE_FIELD) {
+    if (type == com.wurmonline.mesh.Tiles.Tile.TILE_FIELD || type == com.wurmonline.mesh.Tiles.Tile.TILE_FIELD2) {
         suffix = com.wurmonline.mesh.FieldData.getTypeName(type, data) + ", " + com.wurmonline.mesh.FieldData.getAgeName(data);
         if (!com.wurmonline.mesh.FieldData.isTended(data)) {
             suffix = suffix + ", untended";
