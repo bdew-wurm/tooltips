@@ -1,0 +1,21 @@
+if (!com.wurmonline.client.renderer.cell.CreatureCellRenderable.world.getServerConnection().isDev()) {
+    String model = this.creature.getModelName().toString();
+    String res="";
+        if (model.contains("horse")) {
+            if (model.contains(".brown")) res="Brown";
+            else if (model.contains(".gold")) res="Gold";
+            else if (model.contains(".black")) res="Black";
+            else if (model.contains(".white")) res="White";
+            else if (model.contains(".piebaldpinto")) res="Piebald Pinto";
+            else if (model.contains(".bloodbay")) res="Blood Bay";
+            else if (model.contains(".ebonyblack")) res="Ebony";
+            else res="Gray";
+            if (model.contains(".male")) res += ", Male";
+            else if (model.contains(".female")) res += ", Female";
+        } else {
+            if (model.contains(".male")) res += "Male";
+            else if (model.contains(".female")) res += "Female";
+        }
+        if (res.length()>0)
+            $1.addText(res);
+}
