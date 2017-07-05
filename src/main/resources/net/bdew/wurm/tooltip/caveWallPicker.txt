@@ -1,10 +1,33 @@
 {
-    if(this.wallId == 0) {
-        short h00 = this.world.getCaveBuffer().getRawFloor(this.x, this.y);
-        short h01 = this.world.getCaveBuffer().getRawFloor(this.x, this.y + 1);
-        short h10 = this.world.getCaveBuffer().getRawFloor(this.x + 1, this.y);
-        short h11 = this.world.getCaveBuffer().getRawFloor(this.x + 1, this.y + 1);
-        if(h00 == h01 && h00 == h10 && h00 == h11) {
+    if(this.wallSide != 0 && this.wallSide != 1) {
+        if(this.wallSide == 7) {
+            return "Tile corner (" + (int)(this.world.getCaveBuffer().getRawFloor(this.x, this.y)*10) + ")";
+        }
+
+        if(this.wallSide == 8 || this.wallSide == 9 || this.wallSide == 11 || this.wallSide == 10) {
+            return "Tile border" + this.getSlopeSuffix(true);
+        }
+    } else {
+        boolean isFlat = false;
+        short h00;
+        short h01;
+        short h10;
+        short h11;
+        if(this.wallSide == 1) {
+            h00 = this.world.getCaveBuffer().getRawCeiling(this.x, this.y);
+            h01 = this.world.getCaveBuffer().getRawCeiling(this.x, this.y + 1);
+            h10 = this.world.getCaveBuffer().getRawCeiling(this.x + 1, this.y);
+            h11 = this.world.getCaveBuffer().getRawCeiling(this.x + 1, this.y + 1);
+            isFlat = h00 == h01 && h00 == h10 && h00 == h11;
+        } else {
+            h00 = this.world.getCaveBuffer().getRawFloor(this.x, this.y);
+            h01 = this.world.getCaveBuffer().getRawFloor(this.x, this.y + 1);
+            h10 = this.world.getCaveBuffer().getRawFloor(this.x + 1, this.y);
+            h11 = this.world.getCaveBuffer().getRawFloor(this.x + 1, this.y + 1);
+            isFlat = h00 == h01 && h00 == h10 && h00 == h11;
+        }
+
+        if(isFlat) {
             return this.name + " (flat)";
         }
     }
