@@ -1,7 +1,7 @@
 if (!com.wurmonline.client.renderer.cell.CreatureCellRenderable.world.getServerConnection().isDev()) {
     String model = this.creature.getModelName().toString();
     String res="";
-        if (model.contains("horse")) {
+        if (model.contains("horse") || model.contains("foal")) {
             if (model.contains(".brown")) res="Brown";
             else if (model.contains(".gold")) res="Gold";
             else if (model.contains(".black")) res="Black";
