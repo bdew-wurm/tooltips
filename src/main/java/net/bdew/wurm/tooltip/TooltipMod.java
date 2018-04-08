@@ -2,10 +2,7 @@ package net.bdew.wurm.tooltip;
 
 import javassist.ClassPool;
 import org.gotti.wurmunlimited.modloader.classhooks.HookManager;
-import org.gotti.wurmunlimited.modloader.interfaces.Configurable;
-import org.gotti.wurmunlimited.modloader.interfaces.Initable;
-import org.gotti.wurmunlimited.modloader.interfaces.PreInitable;
-import org.gotti.wurmunlimited.modloader.interfaces.WurmMod;
+import org.gotti.wurmunlimited.modloader.interfaces.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +12,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TooltipMod implements WurmMod, Initable, PreInitable, Configurable {
+public class TooltipMod implements WurmClientMod, Initable, PreInitable, Configurable {
     private static final Logger logger = Logger.getLogger("TooltipMod");
 
     public static boolean showSpecialTreesHarvestable;

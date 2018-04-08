@@ -2,14 +2,25 @@ if (!com.wurmonline.client.renderer.cell.CreatureCellRenderable.world.getServerC
     String model = this.creature.getModelName().toString();
     String res="";
         if (model.contains("horse") || model.contains("foal")) {
-            if (model.contains(".brown")) res="Brown";
-            else if (model.contains(".gold")) res="Gold";
-            else if (model.contains(".black")) res="Black";
-            else if (model.contains(".white")) res="White";
-            else if (model.contains(".piebaldpinto")) res="Piebald Pinto";
-            else if (model.contains(".bloodbay")) res="Blood Bay";
-            else if (model.contains(".ebonyblack")) res="Ebony";
-            else res="Gray";
+            if (model.contains(".hell")) {
+                if (model.contains(".brown")) res="Cinder";
+                else if (model.contains(".gold")) res="Envious";
+                else if (model.contains(".black")) res="Shadow";
+                else if (model.contains(".white")) res="Pestilential";
+                else if (model.contains(".piebaldpinto")) res="Nightshade";
+                else if (model.contains(".bloodbay")) res="Incandescent";
+                else if (model.contains(".ebonyblack")) res="Molten";
+                else res="Ash";
+            } else {
+                if (model.contains(".brown")) res="Brown";
+                else if (model.contains(".gold")) res="Gold";
+                else if (model.contains(".black")) res="Black";
+                else if (model.contains(".white")) res="White";
+                else if (model.contains(".piebaldpinto")) res="Piebald Pinto";
+                else if (model.contains(".bloodbay")) res="Blood Bay";
+                else if (model.contains(".ebonyblack")) res="Ebony";
+                else res="Gray";
+            }
             if (model.contains(".male")) res += ", Male";
             else if (model.contains(".female")) res += ", Female";
         } else {
