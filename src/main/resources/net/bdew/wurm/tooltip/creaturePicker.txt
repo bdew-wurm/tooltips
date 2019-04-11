@@ -17,7 +17,7 @@ if (!com.wurmonline.client.renderer.cell.CreatureCellRenderable.world.getServerC
                 else if (model.contains(".goldbuckskin")) res="Gold buckskin";
                 else if (model.contains(".blacksilver")) res="Black silver";
                 else if (model.contains(".appaloosa")) res="Appaloosa";
-                else if (model.contains("horse.chestnut")) res="Chestnut";
+                else if (model.contains("horse.chestnut") || model.contains("foal.chestnut") ) res="Chestnut";
                 else if (model.contains(".gold")) res="Gold";
                 else if (model.contains(".black")) res="Black";
                 else if (model.contains(".white")) res="White";
