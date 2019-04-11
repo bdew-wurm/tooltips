@@ -1,12 +1,12 @@
 apply plugin: 'java'
 
 group "net.bdew.wurm"
-version "0.7"
+version "0.8"
 
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url "http://gotti.no-ip.org/maven/repository" }
+    maven { url "https://gotti.no-ip.org/maven/repository" }
 }
 
 dependencies {
